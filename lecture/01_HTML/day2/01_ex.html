@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form method="get" action="check.html">
+      <fieldset>
+        <legend>입력 양식</legend>
+        <table>
+          <tr>
+            <td><label for="name">이름</label></td>
+            <td><input id="name" name="name" type="text" /></td>
+          </tr>
+          <tr>
+            <td><label for="mail">이메일</label></td>
+            <td>
+              <input id="mail" name="email" type="email" value="aaa@ccc.com" />
+            </td>
+          </tr>
+        </table>
+        <input type="submit" />
+      </fieldset>
+    </form>
+  </body>
+</html>
+
+<!-- 
+제출 예시
+http://127.0.0.1:5500/01_ex.html?name=asdf&email=aaa%40ccc.com
+
+미입력시 전달 자체는 되지만 내용이 없는 형태
+http://127.0.0.1:5500/01_ex.html?name=&email=aaa%40ccc.com
+
+POST인 경우
+live server가 post를 지원하지 않음: 405 에러 발생
+
+action 생략시 현재 URL로 요청을 보낸다
+check.html 파일이 없기 때문에 현재는 404에러 발생
+추후에는 백엔드에서 처리해줄 수 있는 URL을 입력하면 된다
+-->
+
+<!--
+한글 입력시 변환된다
+
+http://127.0.0.1:5500/01_ex.html?name=%ED%95%9C%EA%B8%80&email=aaa%40ccc.com
+-->
