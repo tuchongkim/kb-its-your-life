@@ -1,0 +1,118 @@
+<!--
+1. outer css : 외부 CSS 파일
+2. inner css : 내부 CSS 블럭
+3. inline css : 태그의 style 속성
+-->
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="./basic.css" />
+    <style>
+      /* 2. inner css : 내부 CSS 블럭 */
+      div {
+        background-color: blue;
+      }
+      /* span,
+      ul {
+        background-color: yellow;
+      } */
+      #span1 {
+        color: blue;
+      }
+      .c1 {
+        /* padding: 100px; */
+        padding: 100px 0;
+        list-style-type: none;
+      }
+      input[type='checkbox'] {
+        margin: 100px;
+      }
+
+      /* 후손 선택자 */
+      table tr:first-child {
+        background-color: gray;
+      }
+      /* 자식 선택자 table>tr {} 는 BAD CODE */
+
+      nav > ul > li {
+        display: inline;
+        list-style: none;
+        padding-left: 0px;
+      }
+      nav > ul > li > a {
+        text-decoration: none; /* 컨텐트 밑줄 제거 */
+      }
+      nav > ul > li > a:hover {
+        background-color: yellow;
+        color: blue;
+        font-weight: bold;
+      }
+      nav > ul > li:nth-child(2n + 1) {
+        border-width: 1px;
+        border-color: brown;
+        border-style: dashed;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 3. inline css : 태그의 style 속성 -->
+    <div style="background-color: greenyellow">DIV</div>
+    <div>DIV</div>
+    <span id="span1">SPAN1</span>
+    <span id="span2">SPAN2</span>
+    <ul>
+      <li class="c1">ONE</li>
+      <li>TWO</li>
+      <li class="c1">THREE</li>
+    </ul>
+    <form>
+      <input type="checkbox" checked />ONE&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" />TWO&nbsp;&nbsp;&nbsp;
+      <input type="checkbox" checked />THREE<br />
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>상품</th>
+          <th>현재가</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>삼성전자</td>
+          <td>1000</td>
+        </tr>
+        <tr>
+          <td>국민은행</td>
+          <td>2000</td>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <!-- tbody 태그는 웹 브라우저가 끼워넣은 것
+      tbody는 대표적인 시맨틱 태그 
+      -->
+      <tr>
+        <th>상품</th>
+        <th>현재가</th>
+      </tr>
+      <tr>
+        <td>삼성전자</td>
+        <td>1000</td>
+      </tr>
+      <tr>
+        <td>국민은행</td>
+        <td>2000</td>
+      </tr>
+    </table>
+
+    <nav>
+      <!-- 화면 크기에 따라 li 요소들을 블록 또는 인라인으로 사용하고 싶다면... -->
+      <ul>
+        <li><a href="#">로그인</a></li>
+        <li><a href="#">상품</a></li>
+        <li><a href="#">주문목록</a></li>
+      </ul>
+    </nav>
+  </body>
+</html>

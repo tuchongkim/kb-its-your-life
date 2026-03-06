@@ -1,0 +1,5 @@
+/* 1. outer css */
+div {
+  /* 속성값 뒤에 !important를 쓰면 해당 값이 가장 높은 우선순위를 가진다 */
+  background-color: red !important;
+}
