@@ -1,0 +1,42 @@
+<!-- 
+ <!doctype html>: html5 버전의 문서임을 브라우저에게 알리는 것 
+ vscode 입장에서도 이걸 보고 html5 버전에맞는 문법을 제공해준다.
+ html4 버전은 굉장히 작성해야되는 내용이 많다(외울 필요 없다).
+ -->
+<!doctype html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: flex;
+        background-color: gray;
+        align-items: center; /* 세로 중앙 정렬 */
+
+        /* center: 가로 중앙 정렬, 
+        space-between: 양 끝에 붙이고 간격 동일, 
+        space-around: 여백을 동일하게 */
+        justify-content: center;
+
+        flex-direction: column; /* 세로로 쌓기 */
+
+        gap: 30px;
+        height: 300px;
+      }
+      .item {
+        width: 100px;
+        height: 100px;
+        background-color: brown;
+      }
+      .item:first-child {
+        flex-grow: 1; /* 현재는 고정폭을 활용했기 때문에 flex-grow 효과는 없다 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item">카드1</div>
+      <div class="item">카드2</div>
+      <div class="item">카드3</div>
+    </div>
+  </body>
+</html>

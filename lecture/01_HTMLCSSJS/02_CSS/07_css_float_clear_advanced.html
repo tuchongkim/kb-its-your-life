@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .a,
+      .b {
+        width: 300px;
+        height: 300px;
+        background-color: beige;
+      }
+
+      span,
+      div {
+        border: 1px solid;
+      }
+
+      span.red,
+      div.red {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+
+      /* inline요소에 float지정하면 크기를 갖게되고 같은라인에 먼저배치되며, 형제요소는 이후 나란히 배치됨*/
+      /* block요소에  최초로 지정된 float이 있으면  새로운줄에서 시작됨
+                            이후에 지정된 float이 있으면 이전 float지정된 줄에 나란히 배치됨*/
+      span.green,
+      div.green {
+        width: 50px;
+        height: 50px;
+        background-color: green;
+        float: left;
+      }
+
+      span.blue,
+      div.blue {
+        width: 80px;
+        height: 80px;
+        background-color: blue;
+        float: right;
+        /* blue div를 다음 줄로 이동 */
+        clear: left;
+      }
+
+      span.black,
+      div.black {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        clear: both;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="a">
+      <div class="red">DIV</div>
+      <div class="green">DIV</div>
+      <div class="blue">DIV</div>
+      <div class="black">DIV</div>
+    </div>
+    <hr />
+    <div class="b">
+      <span class="red">SPAN</span>
+      <span class="green">SPAN</span>
+      <span class="blue">SPAN</span>
+      <span class="black">SPAN</span>
+    </div>
+    <div class="c">
+      <span class="red">SPAN</span>
+      <div class="red">DIV</div>
+    </div>
+    <div class="d">
+      <span class="green">SPAN</span>
+      <div class="red">DIV</div>
+    </div>
+  </body>
+</html>
