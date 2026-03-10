@@ -39,103 +39,140 @@ section 영역은 내용이 많을 경우 스크롤 되도록 한다.
 <!doctype html>
 <html>
   <head>
-    <title>21회차 프로젝트</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>KB Star</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      .bg-sb-beige {
-        background-color: rgb(246, 245, 239);
-      }
-      .bg-plum {
-        background-color: plum;
-      }
-      .bg-yellow {
-        background-color: lightyellow;
-      }
-      .bg-gray {
-        background-color: gray;
-      }
-
+      /*
+      BEM 구조 
+      */
+      /* 전체 레이아웃 구성을 위한 설정 */
       body {
+        margin: 0;
         display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        font-family: 'Malgun Gothic', sans-serif;
+        flex-direction: column; /* 세로배치 */
+        height: 100vh; /* 화면 전체 높이 사용 */
       }
 
-      header {
-        height: 120px;
+      /* 1. header 레이아웃: 왼쪽 로고, 오른쪽 내비게이션 */
+      .header {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 5%;
-      }
-      header img {
-        height: 80px;
-        object-fit: contain;
-      }
-      header ul {
-        display: flex;
-        flex-direction: row;
-        list-style: none;
-        gap: 24px;
-      }
-      header ul li a {
-        text-decoration: none;
-        color: #1e3932;
-        font-weight: 600;
-        font-size: 15px;
-      }
-      header ul li a:hover {
-        color: #00704a;
+        justify-content: space-between; /* 양 끝 정렬 */
+        align-items: center; /* 세로 중앙 정렬 */
+        padding: 10px 20px;
+        background-color: #fff;
       }
 
-      .main-container {
-        display: flex;
-        flex: 1; /* 남은 공간을 모두 차지 */
-      }
-      section {
-        flex: 1;
-        overflow-y: auto; /* 내용이 많을 경우 스크롤 */
-        padding: 24px;
-      }
-      aside {
-        width: 200px; /* aside 작게 고정 */
-        padding: 16px;
+      .header__logo {
+        height: 75px;
+        width: auto;
       }
 
-      footer {
-        color: white;
-        text-align: center;
+      .header__menu-list {
+        display: flex; /* 메뉴 가로 정렬 */
+        list-style: none; /* 불릿 제거 */
+        gap: 20px; /* 메뉴 간 간격 */
+      }
+
+      /* 링크 기본 스타일 및 색상 반전 효과 */
+      .header__menu-link {
+        text-decoration: none; /* 밑줄 제거 */
+        color: #333; /* 기본 글자색 */
+        padding: 8px 16px;
+        border-radius: 4px; /* 반전 시 부드러운 모서리 */
+        transition: all 0.3s ease; /* 부드러운 전환 효과 */
+      }
+
+      /* 마우스 호버 시 색상 반전 */
+      .header__menu-link:hover {
+        background-color: #333; /* 배경 검정 (또는 포인트 컬러) */
+        color: #fff; /* 글자 흰색 */
+      }
+
+      /* 2. 메인 컨테이너 (section + aside) */
+      .container {
+        background-color: red;
+
+        display: flex;
+        flex: 1; /* 헤더와 푸터를 제외한 나머지 공간 모두 차지 */
+        overflow: hidden; /* 자식인 section에서만 스크롤이 발생하도록 제한 */
+      }
+      /* 2-1. section 본문 (자동 스크롤) */
+      .container__content {
+        /*flex: 1;*/ /* aside(20%)를 제외한 나머지 80% 차지 */
+        flex: 4;
+        overflow-y: auto; /* 내용이 많으면 자동으로 세로 스크롤 생성 */
         padding: 20px;
-        font-size: 13px;
-        line-height: 1.8;
+        background-color: #f9f9f9;
+      }
+
+      /* 2-2. aside 사이드바 (오른쪽 20%) */
+      .container__sidebar {
+        /* width: 20%; */ /*20% 너비 고정 */
+        flex: 1;
+        padding: 20px;
+        background-color: #eee;
+        border-left: 1px solid #ddd;
+      }
+
+      /* 3. 푸터 (최대 높이 50px) */
+      .footer {
+        max-height: 50px;
+        height: 100%; /* 내용에 따라 늘어나되 50px까지만 */
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
       }
     </style>
   </head>
   <body>
-    <header class="bg-sb-beige">
-      <img src="./21st_logo.png" />
-      <ul>
-        <li><a href="#">로그인</a></li>
-        <li><a href="#">가입</a></li>
-        <li><a href="#">상품</a></li>
-        <li><a href="#">장바구니</a></li>
-        <li><a href="#">주문</a></li>
-      </ul>
+    <header class="header">
+      <img
+        src="./images/starbucks_logo.png"
+        alt="스타벅스 홈"
+        class="header__logo"
+      />
+      <nav class="header__nav">
+        <ul class="header__menu-list">
+          <li class="header__menu-item">
+            <a href="#" class="header__menu-link">로그인</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#" class="header__menu-link">가입</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#" class="header__menu-link">상품</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#" class="header__menu-link">장바구니</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#" class="header__menu-link">주문</a>
+          </li>
+        </ul>
+      </nav>
     </header>
-    <div class="main-container">
-      <section class="bg-yellow"></section>
-      <aside class="bg-plum"></aside>
-    </div>
-    <footer class="bg-gray">
-      사업자등록번호 : 201-81-21515 주식회사 에스씨케이컴퍼니 대표이사 : 손정현
-      TEL : 1522-3232 개인정보 보호책임자 : 이찬우 ⓒ 2026 Starbucks Coffee
-      Company. All Rights Reserved.
+    <main class="container">
+      <section class="container__content">
+        <!-- 내용이 많아지면 이곳에 스크롤이 생깁니다 -->
+        <h2>본문 내용</h2>
+        <p>... 내용 생략 ...</p>
+      </section>
+
+      <aside class="container__sidebar">
+        <h3>사이드바 (20%)</h3>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <p>
+        사업자등록번호 : 201-81-21515 주식회사 에스씨케이컴퍼니 대표이사 :
+        손정현 TEL : 1522-3232 개인정보 보호책임자 : 이찬우 ⓒ 2026 Starbucks
+        Coffee Company. All Rights Reserved
+      </p>
     </footer>
   </body>
 </html>
