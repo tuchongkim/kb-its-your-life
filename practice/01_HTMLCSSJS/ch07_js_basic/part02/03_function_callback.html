@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <title>JavaScript Basic</title>
+  <script>
+    function callTenTimes(num, callback) {
+      for (let i = 0; i < num; i++) {
+        callback();
+      }
+    }
+
+    const f1 = function () {
+      alert('함수 호출');
+    };
+
+    callTenTimes(5, f1);
+  </script>
+  <body></body>
+</html>
