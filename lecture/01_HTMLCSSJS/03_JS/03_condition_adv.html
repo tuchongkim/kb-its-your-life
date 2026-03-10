@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      //if elseif else
+      let num = 15;
+      console.log(num % 2 == 0 ? '짝수' : '홀수');
+
+      if (num % 2 == 0) {
+        console.log('짝수');
+      } else {
+        console.log('홀수');
+      }
+
+      //형변환 : Number() - number형으로 변환
+      //       : parseInt() - 정수형으로 변환
+      // Math.random() : 0.0 <= r < 1
+      let randomNum = parseInt(Math.random() * 3 + 1); //1 <= r < 4
+      console.log('컴퓨터가 낸 숫자 : ', randomNum);
+
+      let userStr = window.prompt('가위-1, 바위-2, 보-3');
+      let userNum = parseInt(userStr);
+      console.log('사용자가 낸 숫자 : ', userNum);
+
+      //TODO 사용자 입장에서 이겼습니다, 비겼습니다, 졌습니다 메시지를 출력하시오.
+
+      //   // 1차 풀이
+      //   if (randomNum === userNum) {
+      //     console.log('비겼습니다');
+      //   } else if (
+      //     (randomNum === 1 && userNum === 2) ||
+      //     (randomNum === 2 && userNum === 3) ||
+      //     (randomNum === 3 && userNum === 1)
+      //   ) {
+      //     console.log('이겼습니다');
+      //   } else {
+      //     console.log('졌습니다');
+      //   }
+
+      //   // 2차 풀이
+      //   let decisionNum = userNum - randomNum;
+      //   if (decisionNum === 0) {
+      //     console.log('비겼습니다');
+      //   } else if (decisionNum === 1 || decisionNum === -2) {
+      //     console.log('이겼습니다');
+      //   } else if (decisionNum === -1 || decisionNum === 2) {
+      //     console.log('졌습니다');
+      //   }
+
+      // 최종 풀이
+      const result = (userNum - randomNum + 3) % 3;
+      if (result === 0) {
+        console.log('비겼습니다');
+      } else if (result === 1) {
+        console.log('이겼습니다');
+      } else if (result === 2) {
+        console.log('졌습니다');
+      }
+
+      //switch
+      const year = 2026;
+      //년도를 12로 나눈 나머지값이 0: 원숭이, 1: 닭, 2: 개, 3: 돼지, 4: 쥐,
+      //                            5: 소, 6: 호랑이, 7: 토끼,
+      //                            8: 용, 9: 뱀, 10: 말, 11: 양
+
+      const mod = year % 12;
+      switch (mod) {
+        case 10:
+          console.log('말');
+
+        case 11:
+          console.log('양');
+          break;
+        default:
+          console.log('그 이외의 동물');
+      }
+
+      const today = new Date();
+      const year1 = today.getFullYear();
+      const month = today.getMonth(); // 1월은 0
+      //1~6: 상반기, 7~12: 하반기
+      if (month + 1 <= 6) {
+        console.log('상반기');
+      } else {
+        console.log('하반기');
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

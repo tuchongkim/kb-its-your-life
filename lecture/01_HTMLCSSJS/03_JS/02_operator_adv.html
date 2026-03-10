@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      let a, b, c;
+      a = 2;
+      b = 3;
+
+      //산술연산자 : +, -, *, /, %
+      c = a / b;
+      console.log(c); //0.6666666666666666
+
+      b = 0;
+      c = a / b;
+      console.log(c); //Infinity
+
+      b = undefined;
+      c = a / b;
+      console.log(c); //NaN
+
+      //대입연산자 : =, +=, -=, /=, %=
+      a += 10;
+      console.log(a); //12
+
+      //비교연산자 : ==, ===, !=, !==, >, >=, <, <=
+      a = 2;
+      b = '2';
+      console.log(a == b); //true
+      console.log(a === b); // false
+
+      //논리연산자 : &&, ||, !   //비트연산자 : &, |
+      a = 10;
+      console.log(a < 20 && a % 2 == 0); //true
+      console.log(a > 20 && a % 2 == 0); //false, && 연산자의 오른쪽 부분은 연산에 참여하지 않음
+      c = true && false && true;
+      console.log(c); //false
+      c = 1 && 0 && 1;
+      console.log(c); //0
+
+      //단항연산자 : ++, --
+      a = 10;
+      b = a++;
+      console.log(a, b);
+
+      a = 10;
+      b = ++a;
+      console.log(a, b);
+
+      // GOOD CODE
+      a = 10;
+      a++;
+      b = a;
+
+      // BAD CODE
+      b = ++a;
+
+      //삼항연산자 : ? :
+      a = 10;
+      b = a % 2 ? '짝수' : '홀수';
+      console.log(b); //짝수
+
+      //형변환
+      //자동형변환
+      console.log('1' + '2'); //문자열 결합연산자 '12'
+      console.log(1 + '2'); //number 1이 string으로 자동형변환 '12'
+      console.log('1' + 2); //number 2가 string으로 자동형변환 '12'
+
+      console.log(1 - true); //boolean true가 number 1로 자동형변환, 결과 0
+      console.log(true + '2'); //boolean true가 string으로 자동형변환 'true2'
+      console.log(true - '2'); //boolean true가 number 1로, '2'는 number 2로, 결과 -1
+
+      //강제 형변환
+      console.log(typeof String(2)); //String(): number -> string
+      console.log(typeof Number('2')); //number
+      console.log(typeof Boolean(1)); //boolean
+    </script>
+  </head>
+  <body></body>
+</html>

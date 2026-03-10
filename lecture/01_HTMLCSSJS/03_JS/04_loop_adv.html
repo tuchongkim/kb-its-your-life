@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      for (let i = 0; i < 10; i++) {
+        console.log('KB' + i);
+      }
+      let arr = [1, 10, 5, 4, 2, 3, 1, 1, 6, 5, 5, 5, 8]; // 1~10 사이의 숫자
+      for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+      }
+      for (let index in arr) {
+        console.log(index);
+      }
+      for (let element of arr) {
+        console.log(element);
+      }
+      console.log('-------------forEach 메서드-----------------');
+      arr.forEach(function (value, index) {
+        console.log(index, value);
+      });
+
+      console.log('arr 배열에 저장된 요소들의 출현횟수를 계산하고 출력하시오');
+      /* 아래와 같은 결과가 console에 출력되도록 완성하시오
+      1의 출현횟수 : 3회
+      2의 출현횟수 : 1회
+      3의 출현횟수 : 1회
+      ...
+      */
+      const countArr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      // const countArr = new Array(10).fill(0);
+      arr.forEach((value) => {
+        countArr[value - 1]++;
+      });
+      for (let i = 0; i < countArr.length; i++) {
+        console.log(`${i + 1}의 출현횟수 : ${countArr[i]}회`);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

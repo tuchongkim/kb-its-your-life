@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      var v1 = 10;
+      v2 = 20;
+      let let1 = 10;
+      console.log(window.v1); //10
+      console.log(window.v2); //20
+      console.log(window.let1); //undefined
+
+      var vf1 = function () {
+        console.log('함수입니다', 'v1=' + v1);
+        var v3 = 30; // 함수 내부에서 선언한 변수는 함수 내부에서만 사용할 수 있다. 함수 외부에서 사용 불가
+        console.log('v3=' + v3);
+      };
+
+      vf1(); //함수호출
+      console.log(window.v3); //undefined
+
+      for (var vi = 0; vi < 10; vi++) {
+        console.log(vi);
+      }
+      console.log('out of loop vi: ' + window.vi); //10
+
+      for (let leti = 0; leti < 10; leti++) {
+        console.log(leti);
+      }
+      console.log('out of loop leti: ' + window.leti); //undefined
+      const year = 2026;
+      year = 1997; //Uncaught TypeError: Assignment to constant variable.
+    </script>
+  </head>
+  <body></body>
+</html>
