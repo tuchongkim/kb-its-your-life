@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      // window 객체의 load 이벤트는 DOM이 솬성되고, 모든 리소스가 준비된 상태에서 발생한다
+      window.addEventListener('load', function () {
+        // load 이벤트가 발생하면 callback 함수를 실행하라
+        alert('4');
+      });
+
+      // window.onload = function() {} 와 같음
+      alert('1');
+    </script>
+  </head>
+  <body>
+    <script>
+      alert('2');
+    </script>
+    <div onclick="alert(4)">DIV</div>
+    <script>
+      alert('3');
+    </script>
+  </body>
+</html>

@@ -11,15 +11,21 @@
         address: '송파구',
         point: 4,
         /* 객체 내에서 선언한 일반 함수에서는 this가 해당 객체를 가리킨다 */
-        print: function () {
+        //print: function () {
+
+        //ES6 표기법
+        print() {
           console.log(this); //{name: '홍길동', address: '송파구', point: 4, print: ƒ, work: ƒ}
-          console.log(this.name + ':' + this.address + ':' + this.point);
+          //console.log(this.name + ':' + this.address + ':' + this.point);
+          console.log(`${this.name}:${this.address}:${this.point}`); //ES6 표기법
         },
+
         /* 
         화살표 함수의 this는 상위 scope(여기서는 Window객체)의 this를 가져온것
         메서드(객체 내의 함수)를 만들 때는 화살표 함수를 쓰지 않는 것을 권장한다. (제발 쓰지 말자)
         콜백함수에서는 자주 사용된다.
         */
+        //ES6 표기법
         work: () => {
           console.log(this); //Window {window: Window, self: Window, document: document, name: '', location: Location, …}
           console.log(this.name + '이 열심히 일합니다');
