@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+  <head>
+    <title>DOM Basic</title>
+    <script>
+      window.addEventListener('load', function () {
+        const btnObj = document.querySelector('#btn');
+
+        btnObj.addEventListener('click', function () {
+          const nameObj = document.querySelector('#name');
+          console.log(nameObj.value);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <label for="name">이름:</label>
+    <input id="name" name="name" type="text" size="30" />
+    <input id="btn" type="button" value="전송" />
+  </body>
+</html>

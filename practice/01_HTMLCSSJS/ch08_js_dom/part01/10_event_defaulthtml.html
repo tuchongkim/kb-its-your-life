@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <title>DOM Basic</title>
+    <script>
+      window.addEventListener('load', function () {
+        const aObj = document.querySelector('#button');
+
+        aObj.addEventListener('click', function (e) {
+          e.preventDefault();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <a id="button" href="https://www.naver.com">버튼</a>
+  </body>
+</html>

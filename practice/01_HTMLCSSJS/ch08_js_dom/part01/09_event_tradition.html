@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <title>DOM Basic</title>
+    <script>
+      window.addEventListener('load', function () {
+        const btnObj = document.querySelector('#button');
+
+        btnObj.addEventListener('click', function () {
+          alert('click');
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="button">버튼</button>
+  </body>
+</html>

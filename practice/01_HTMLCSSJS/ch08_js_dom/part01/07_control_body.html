@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <title>DOM Basic</title>
+    <script>
+      window.addEventListener('load', function () {
+        document.body.setAttribute('data-custom', 'value');
+
+        let dataCustom = document.body.getAttribute('data-custom');
+        alert(dataCustom);
+      });
+    </script>
+  </head>
+  <body></body>
+</html>
