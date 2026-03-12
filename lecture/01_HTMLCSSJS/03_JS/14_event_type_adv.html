@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트 종류</title>
+    <style>
+      div.change2 {
+        /* display: none; */ /* 영역 사라지기 */
+        visibility: hidden; /* 영역존재, 내용감추기 */
+      }
+    </style>
+    <script>
+      //DOM완료, 자원이 모두 준비되면 window객체에서 load이벤트가 발생된다
+      window.addEventListener('load', function () {
+        //DOM트리에서 class속성값이 keyup인 div의 자식객체중 class속성값이 name인 input객체찾기
+        const nameInputObj = document.querySelector('div.keyup>input.name');
+
+        //DOM트리에서 class속성값이 name인 span객체차기
+        const nameSpanObj = document.querySelector('div.click span.name');
+        nameInputObj.addEventListener('keyup', function () {
+          //input 태그에는 value 속성(attribute)이 존재. DOM 입장에서 property.
+          //span태그는 value 프로퍼티가 없기 때문에 element body에 값을 넣어줄 때는 innerHTML 프로퍼티를 사용한다.
+          nameSpanObj.innerHTML = nameInputObj.value;
+        });
+
+        //DOM트리에서 class속성값이 check인 input객체 찾기
+        const checkAllObj = document.querySelector('input.check');
+
+        //DOM트리에서 name속성값이 c인 input객체들 찾기
+        const checkObjList = document.querySelectorAll('input[name=c]');
+        checkAllObj.addEventListener('click', function (e) {
+          //this
+          console.log(e.target.checked);
+          checkObjList.forEach(function (value, index) {
+            value.checked = e.target.checked;
+          });
+        });
+
+        //DOM트리에서 class속성값이 sido인 select객체 찾기
+        const sidoObj = document.querySelector('div.change select.sido');
+
+        //DOM트리에서 class속성값이 sigungu인 select객체 찾기
+        const sigunguObj = document.querySelector('div.change2 select.sigungu');
+
+        //DOM트리에서 class속성값이 change2인 div객체 찾기
+        // const sigungudivObj = document.querySelector('div.change2');
+        const sigungudivObj = sigunguObj.parentElement; //부모요소객체찾기
+
+        sidoObj.addEventListener('click', function () {
+          console.log(`클릭`);
+        });
+        sidoObj.addEventListener('change', function () {
+          // 옵션이 바뀌어야 change 이벤트 발생
+          // value속성값: 명시한 경우에는 해당 값, 명시하지 않으면 element body내용
+          console.log(`체인지`);
+          let sigunguData = '';
+
+          switch (this.value) {
+            case 'seoul':
+              //   sigunguData += '<option class="gu">광진구</option>';
+              //   sigunguData += '<option>송파구</option>';
+              //   sigunguData += '<option>성동구</option>';
+              //   sigunguData += '<option>서초구</option>';
+              //    sigunguObj.innerHTML = sigunguData;
+              const seoulGu = ['광진구', '송파구', '성동구', '서초구'];
+              for (let gu of seoulGu) {
+                const optObj = document.createElement('option'); //element 노드 생성
+                optObj.textContent = gu; //text 노드 추가
+                optObj.className = 'gu'; //attribute 노드 추가
+                sigunguObj.appendChild(optObj); //sigunguObj객체의 자식노드로 연결
+              }
+              sigungudivObj.style.visibility = 'visibile';
+              break;
+            case 'busan':
+              break;
+            case 'jeju':
+              break;
+            default:
+              sigunguObj.innerHTML = '';
+              sigungudivObj.style.visibility = 'hidden';
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="keyup">
+      <input type="text" class="name" placeholder="이름을 입력하세요" />
+    </div>
+    <div class="click">
+      <fieldset>
+        <legend><span class="name"></span>님 다음 정보를 확인해주세요</legend>
+
+        <input type="checkbox" class="check" /><span>전체동의</span><br />
+
+        <input type="checkbox" name="c" value="terms " /><span
+          >필수 약관 동의</span
+        ><br />
+        <input type="checkbox" name="c" value="marketing" /><span
+          >마케팅 수신 동의</span
+        >
+      </fieldset>
+    </div>
+
+    <div class="change">
+      매장찾기
+      <select class="sido">
+        <option>시도를 선택하세요</option>
+        <option value="seoul">서울</option>
+        <option value="busan">부산</option>
+        <option value="jeju">제주도</option>
+      </select>
+    </div>
+    <div class="change2">
+      <select class="sigungu">
+        <!-- -->
+      </select>
+    </div>
+  </body>
+</html>
