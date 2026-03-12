@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- html문서에서도 script태그의 type을 module로 명시하면 import가 가능하다 -->
+    <script type="module">
+      import { add, test } from './01_export.js';
+      console.log(add(4));
+      test(); //modul내부에서 this는 undefined
+    </script>
+  </head>
+  <body></body>
+</html>
