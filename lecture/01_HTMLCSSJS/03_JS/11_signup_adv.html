@@ -46,7 +46,7 @@
           //정상입력된 경우
           //일반함수로 콜백함수를 작성한 경우 formObj 대신 this를 써도 똑같이 동작한다
           formObj.method = 'post';
-          formObj.action = 'https://kbstar.com';
+          formObj.action = 'http://localhost:3000/signup';
           formObj.submit();
         });
       });
@@ -64,7 +64,8 @@
       <input type="password" id="pwd" name="pwd1" required /><br />
       <label for="pwd2">비밀번호 확인 : </label>
       <input type="password" id="pwd2" required /><br />
-      <label for="e">이메일 : </label><input type="email" id="e" /><br />
+      <label for="e">이메일 : </label
+      ><input type="email" id="e" name="email" required /><br />
 
       <input type="submit" value="가입" />
       <input type="reset" value="초기화" />
