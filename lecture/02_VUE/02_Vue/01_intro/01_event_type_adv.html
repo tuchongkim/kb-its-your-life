@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트 종류</title>
+    <style>
+      div.change2 {
+        /* display: none; */ /* 영역 사라지기 */
+        visibility: hidden; /* 영역존재, 내용감추기 */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="keyup">
+        <input
+          type="text"
+          class="name"
+          placeholder="이름을 입력하세요"
+          v-model="name"
+        />
+      </div>
+      <div class="click">
+        <fieldset>
+          <legend>
+            <span class="name">{{name}}</span>님 다음 정보를 확인해주세요
+          </legend>
+
+          <input type="checkbox" class="check" /><span>전체동의</span><br />
+
+          <input type="checkbox" name="c" value="terms " /><span
+            >필수 약관 동의</span
+          ><br />
+          <input type="checkbox" name="c" value="marketing" /><span
+            >마케팅 수신 동의</span
+          >
+        </fieldset>
+      </div>
+
+      <div class="change">
+        매장찾기
+        <select class="sido">
+          <option>시도를 선택하세요</option>
+          <option value="seoul">서울</option>
+          <option value="busan">부산</option>
+          <option value="jeju">제주도</option>
+        </select>
+      </div>
+      <div class="change2">
+        <select class="sigungu">
+          <!-- -->
+        </select>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      let model = { name: '' };
+      let vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return model;
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
