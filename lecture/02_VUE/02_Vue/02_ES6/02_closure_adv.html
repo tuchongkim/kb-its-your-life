@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>클로저</title>
+    <script>
+      //함수(리턴되는 이름없는 함수)가 선언될 당시의 외부 스코프(createCount)를 기억해서, 해당 함수가 호출되더라도
+      //그 환경에 계속 접근할 수 있다
+      function createCount() {
+        let count = 0; //데이터 은닉, 값을 유지
+        return function () {
+          count++; //외부변수 count접근, 증가
+          return count;
+        };
+      }
+
+      const result = createCount();
+      console.log(result()); //1
+      console.log(result()); //2
+      console.log(count);
+    </script>
+  </head>
+  <body></body>
+</html>
