@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    Model View ViewModel패턴의 Proxy이해<br>
+    Vue인스턴스의 data옵션은 Proxy객체로서 반응성을 제공하는 기본요소입니다. 따라서 Model객체의 message값을 변경하면 즉시 화면을 갱신합니다. 갱신할 화면의 영역은 mount()하고 있는 id가
+    app인 div요소입니다.
+    <div id="app1">
+        <h2 id="demo1"></h2>
+        <div id="demo2"></div>
+    </div>
+    <script>
+        const model1 = { message: '난 Vanilla.js메시지' }
+        const data = new Proxy(model1, {
+            get: function (target, key) {
+                return target[key]
+            },
+        })
+        const demo1 =
+            document.querySelector("#app1>#demo1")
+        const demo2 =
+            document.querySelector("#app1>#demo2")
+        demo1.innerHTML = data.message
+        demo2.innerHTML = data.message
+    </script>
+
+    <hr>
+    <div id="app2">
+        <h2>{{message}}</h2>
+        <div>{{message}}</div>
+    </div>
+    <script src="https://unpkg.com/vue">
+    </script>
+    <script>
+        var model2 = { message: "난 Vue.js메시지" }
+        var vm = Vue.createApp({
+            name: "App",
+            data() {
+                return model2
+            }
+        }).mount('#app2')
+    </script>
+
+
+</body>
+
+</html>

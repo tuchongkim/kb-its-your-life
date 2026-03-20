@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>03-01</title>
+</head>
+
+<body>
+  HTML요소에서는 {{}}과 같은 콧수염을 닮은 모양의 템플릿표현식을 사용해 선언적으로 데이터를 렌더링합니다.
+  {{}}의 형상이 콧수염 모양을 닮았다고 해서 콧수염표현식(Mustache Expression)이라고도 부르며,
+  문자열을 템플릿(뷰영역)에 덧붙여 표현한다고해서 보간법(Interpolation)이라고도 합니
+  <div id="app">
+    보간법:
+    <div>{{message}}</div>
+  </div>
+  <script type="text/javascript" src="https://unpkg.com/vue"></script>
+  <script type="text/javascript">
+    var model = {
+      message: 'HELLO'
+    };
+    var vm = Vue.createApp({
+      name: "App",
+      data() {
+        return model;
+      },
+    }).mount("#app");
+  </script>
+</body>
+
+</html>

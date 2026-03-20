@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>03-08</title>
+</head>
+
+<body>
+  <p>
+    Vue.js의 기본 한글인코딩은 UTF-8입니다
+    v-model양방향디렉티브로 문자 단위로 반응합니다
+    그러나 한글은 글자하나의입력이 완료될 때 반응합니다
+    나중에 배울 이벤트처리해야합니다
+  </p>
+  <div id="app">
+    <input id="a" type="text" v-model="nameKO" />
+    <br>
+    입력하신 한글이름 : <span>{{nameKO}}</span>
+    <p>입력하신 문자 길이: {{ nameKO.length }}</p>
+    <br>
+
+    <input id="a" type="text" :value="name" @input="changeName" />
+    <br>
+    입력하신 이름 : <span>{{name}}</span>
+  </div>
+  <script type="text/javascript" src="https://unpkg.com/vue"></script>
+  <script type="text/javascript">
+    var vm = Vue.createApp({
+      name: "App",
+      data() {
+        return { nameKO: "한글", name: "" };
+      },
+      methods: {
+        changeName(e) {
+          this.name = e.target.value;
+        },
+      },
+    }).mount("#app");
+  </script>
+</body>
+
+</html>
