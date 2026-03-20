@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>method</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <!--계산된 속성은 데이터가 변경되면 미리 호출하여 캐싱해둔 값을 렌더링할때 반복적으로 사용하지만 메서드는 렌더링할때 호출됩니다. 실행결과는 동일한 데이터를 여러번 출력합니다.
+    메서드 작성시 주의할 점은 화살표 함수를 메서드로 등록할 경우 컴포넌트 인스턴스 this에 접근할 수 없다는 점입니다. 계산된 속성과 같이 작성할 수 있지 않을까 생각되지만 오작동할 것입니다. 그러므로 메서드가 컴포넌트 인스턴스에 접근해야 한다면 전통적인 자바스크립트 함수로 작성해야 합니다.
+ -->
+    <div id="app">
+      1보다 큰수 :
+      <input id="a" type="text" v-model.number="num" />
+      <br />
+      1부터 입력한 값까지의 합 : <span>{{sum()}}</span><br />
+      1부터 입력한 값까지의 합 : <span>{{sum()}}</span><br />
+      1부터 입력한 값까지의 합 : <span>{{sum()}}</span><br />
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      var vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return { num: 0 };
+        },
+        methods: {
+          sum() {
+            console.log('## num : ' + this.num);
+            var n = parseInt(this.num);
+            if (Number.isNaN(n)) return 0;
+            return (n * (n + 1)) / 2;
+          },
+        },
+      }).mount('#app2');
+    </script>
+  </body>
+</html>

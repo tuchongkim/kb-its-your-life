@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>computed</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <!--계산된 속성은 data나 다른 속성이 변경될 때 함수가 실행되어 저장된 캐싱된 값입니다. 함수의 실행은 의존하고 있는 속성 또는 data가 변경될 때 한 번 호출됩니다. 계산된 속성을 작성할 때는 computed옵션에 함수를 등록하고 반드시 return하면 됩니다-->
+    <div id="app">
+      1보다 큰수 :
+      <input id="a" type="text" v-model.number="num" />
+      <br />
+      1부터 입력한 값까지의 합 : <span>{{sum}}</span><br />
+      1부터 입력한 값까지의 합 : <span>{{sum}}</span><br />
+      1부터 입력한 값까지의 합 : <span>{{sum}}</span><br />
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+
+    <script>
+      var vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return { num: 0 };
+        },
+        computed: {
+          sum() {
+            //사용하는 데이터: this.num에 변화가 있을 경우에만 활성화된다.
+            console.log('## num : ' + this.num);
+            var n = parseInt(this.num);
+            if (Number.isNaN(n)) return 0;
+            return (n * (n + 1)) / 2;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
