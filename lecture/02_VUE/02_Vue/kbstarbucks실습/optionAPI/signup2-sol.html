@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>가입</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script>
+      /*
+      window.addEventListener('load', function () {
+        //DOM트리에서 type속성값이 button인 input객체찾기
+        const btDupchkObj = document.querySelector('input[type=button]');
+        btDupchkObj.addEventListener('click', function () {
+          //DOM트리에서 id속성값이 "id"인 객체 찾기
+          const idObj = document.querySelector('#id');
+          //객체의 value프로퍼티 : idObj.value
+
+          //   alert(`${idObj.value} 는 사용 가능한 아이디입니다`);
+          //DOM트리에서 class속성값이 iddupchk 객체찾기
+          const spanDupchkObj = document.querySelector('.iddupchk');
+          spanDupchkObj.innerHTML = `${idObj.value} 는 사용 가능한 아이디입니다`;
+        });
+
+        //submit버튼이 클릭되면 click이벤트 발생 ->
+        // submit버튼이 포함된 form의 submit이벤트 자동 발생 ->
+        // submit이벤트의 기본핸들러 : form의 action속성값에 해당하는 URL로 자동 전송됨
+        // 기본핸들러를 막기 : e.preventDefault();
+
+        //DOM트리에서 type속성값이 submit인 input객체찾기
+
+        const submitObj = document.querySelector('input[type=submit]');
+        submitObj.addEventListener('click', function () {
+          alert('submit버튼이 클릭됨');
+        });
+        //DOM트리에서 class속성값이 signup인 form객체 찾기
+        const formObj = document.querySelector('form.signup');
+        formObj.addEventListener('submit', function (e) {
+          e.preventDefault(); //이벤트의 기본핸들러를 막기
+          // alert('폼이 전송됨');
+
+          //비밀번호값과 비밀번호확인값이 다른 경우 "비밀번호가 서로 다릅니다"라는 alert창 띄우기
+          const pwd1Obj = document.querySelector('#pwd');
+          const pwd2Obj = document.querySelector('#pwd2');
+          if (pwd1Obj.value !== pwd2Obj.value) {
+            alert('비밀번호가 서로 다릅니다');
+            return false;
+          }
+          //정상입력된 경우
+          this.method = 'post';
+          // this.action = 'https://kbstar.com';
+          this.action = 'http://localhost:3000/signup';
+          this.submit();
+        });
+      });
+      */
+    </script>
+  </head>
+  <body>
+    <div id="app">
+      <form class="signup" @submit.prevent="signup" class="container">
+        <!-- 입력한 ID는 {{ person.id }} 입니다 -->
+        <label for="id">아이디 : </label>
+        <input
+          type="text"
+          id="id"
+          name="id"
+          required
+          v-model="person.id"
+          @focus="
+        idExist = true;
+        $event.target.select();
+      "
+        />
+        <input type="button" value="아이디중복확인" @click="iddupchk" />
+
+        <span class="iddupchk" v-if="!idExist"
+          >{{person.id}}는 사용가능한 아이디입니다
+        </span>
+        <br />
+        <label for="pwd">비밀번호 :</label
+        ><input
+          type="password"
+          id="pwd"
+          name="pwd1"
+          required
+          v-model="person.pwd"
+        /><br />
+        <label for="pwd2">비밀번호확인: </label
+        ><input type="password" id="pwd2" required v-model="pwd2" /><br />
+        <label for="e">이메일 :</label
+        ><input
+          type="email"
+          id="e"
+          name="email"
+          required
+          v-model="person.email"
+        /><br />
+
+        <input
+          type="submit"
+          value="가입"
+          :style="{visibility: !idExist ? 'visible' : 'hidden'}"
+        />
+        <!-- <input type="submit" value="가입" v-show="!idExist" /> -->
+        <input type="reset" value="초기화" />
+      </form>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      var vm = Vue.createApp({
+        name: 'App',
+        data() {
+          return {
+            person: { id: '', pwd: '', email: '' },
+            pwd2: '',
+            idExist: true, //초기값 - 아이디 없으면 false, 아이디 있으면 true
+          };
+        },
+        methods: {
+          async iddupchk() {
+            const url = `http://localhost:3000/iddupchk?id=${this.person.id}`;
+            try {
+              const response = await fetch(url);
+              console.log(response);
+              if (response.status == 200) {
+                this.idExist = false;
+              } else {
+                this.idExist = true;
+              }
+            } catch (err) {
+              //Network 오류, 잘못된 URL인 경우
+            }
+            // this.idExist = false; //아이디가 없는 경우
+          },
+          signup() {
+            if (this.person.pwd !== this.pwd2) {
+              alert('비밀호가 서로 다릅니다');
+              return false;
+            }
+            //정상입력인 경우
+            const method = 'post';
+            const url = 'http://localhost:3000/signup';
+
+            //비동기 요청응답: XmlHttpRequest 객체 fetch()
+            //this.person 객체내용을 id=XX&pwd=YY&email=ZZ@a.com형태로 변환시켜 제출
+            const searchParams = new URLSearchParams(this.person);
+            const requestInit = {
+              method: method,
+              body: searchParams,
+              Headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+            };
+            fetch(url, requestInit)
+              .then((response) => {
+                return response.text();
+              })
+              .then((responseText) => {
+                alert(responseText);
+              })
+              .catch((err) => {
+                alert(err.message);
+              });
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

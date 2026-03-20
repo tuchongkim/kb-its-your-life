@@ -13,8 +13,17 @@ app.get('/', (req, resp) => {
 요청의 body사용하고 싶다면 아래 함수를 사용하세요 */
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/iddupchk', (req, resp) => {
+  if (req.query?.id === 'admin') {
+    resp.status(400).send();
+    //resp.send('이미 존재하는 아이디입니다');
+  } else {
+    resp.status(200).send();
+    //resp.send('사용 가능한 아이디입니다');
+  }
+});
 app.post('/signup', (req, resp) => {
-  console.log(req);
+  console.log(req.body);
   resp.send('가입성공');
 });
 
