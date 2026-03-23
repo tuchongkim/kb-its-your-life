@@ -13,18 +13,37 @@ app.get('/', (req, resp) => {
 요청의 body사용하고 싶다면 아래 함수를 사용하세요 */
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/iddupchk', (req, resp) => {
-  if (req.query?.id === 'admin') {
+/* 요청ContentType이 json인 경우
+요청의 body사용하고 싶다면 아래 함수를 사용하세요 */
+app.use(express.json());
+
+// // 요청 URL 예) http://localhost:3000/iddupchk?id=1
+// app.get('/iddupchk', (req, resp) => {
+//   if (req.query?.id === 'admin') {
+//     resp.status(400).send();
+//     //resp.send('이미 존재하는 아이디입니다');
+//   } else {
+//     resp.status(200).send();
+//     //resp.send('사용 가능한 아이디입니다');
+//   }
+// });
+
+// 요청 URL 예) http://localhost:3000/iddupchk/1
+app.get('/iddupchk/:id', (req, resp) => {
+  // :id -> path variable
+  console.log(req.params.id);
+  if (req.params.id === 'admin') {
     resp.status(400).send();
-    //resp.send('이미 존재하는 아이디입니다');
   } else {
-    resp.status(200).send();
-    //resp.send('사용 가능한 아이디입니다');
+    resp.sendStatus(200);
   }
 });
+
 app.post('/signup', (req, resp) => {
   console.log(req.body);
-  resp.send('가입성공');
+  const person = req.body;
+
+  resp.send(person.id + '가입성공');
 });
 
 app.get('/product', (req, resp) => {
