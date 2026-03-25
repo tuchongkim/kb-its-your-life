@@ -48,9 +48,43 @@ app.post('/signup', (req, resp) => {
 
 app.get('/product', (req, resp) => {
   let responseObj = [
-    { prodNo: 'C001', prodName: '아메리카노', prodPrice: 1500 },
-    { prodNo: 'C002', prodName: '아이스아메리카노', prodPrice: 1500 },
-    { prodNo: 'C003', prodName: '라떼', prodPrice: 1500 },
+    {
+      prodNo: 'C0001',
+      prodName: '아메리카노',
+      prodPrice: 1500,
+      img: 'C0001.jpg',
+    },
+    {
+      prodNo: 'C0002',
+      prodName: '아이스아메리카노',
+      prodPrice: 1500,
+      img: 'C0002.jpg',
+    },
+    { prodNo: 'C0003', prodName: '라테', prodPrice: 2000, img: 'C0003.jpg' },
+    {
+      prodNo: 'C0004',
+      prodName: '아이스라테',
+      prodPrice: 2000,
+      img: 'C0004.jpg',
+    },
+    {
+      prodNo: 'C0005',
+      prodName: '콜드브루몰트',
+      prodPrice: 2500,
+      img: 'C0005.jpg',
+    },
+    {
+      prodNo: 'C0006',
+      prodName: '카페브레베',
+      prodPrice: 3500,
+      img: 'C0006.jpg',
+    },
+    {
+      prodNo: 'C0007',
+      prodName: '바닐라라떼',
+      prodPrice: 3500,
+      img: 'C0007.jpg',
+    },
   ];
   resp.json(responseObj);
 });
