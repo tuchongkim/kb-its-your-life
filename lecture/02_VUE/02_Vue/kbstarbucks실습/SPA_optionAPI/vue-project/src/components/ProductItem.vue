@@ -18,3 +18,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+tr:hover {
+  filter: invert(1);
+}
+</style>
