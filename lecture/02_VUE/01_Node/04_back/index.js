@@ -89,6 +89,60 @@ app.get('/product', (req, resp) => {
   resp.json(responseObj);
 });
 
+app.get('/product/:prodNo', (req, resp) => {
+  console.log(req.params.prodNo);
+  let responseObj = [
+    {
+      prodNo: 'C0001',
+      prodName: '아메리카노',
+      prodPrice: 1500,
+      img: 'C0001.jpg',
+    },
+    {
+      prodNo: 'C0002',
+      prodName: '아이스아메리카노',
+      prodPrice: 1500,
+      img: 'C0002.jpg',
+    },
+    { prodNo: 'C0003', prodName: '라테', prodPrice: 2000, img: 'C0003.jpg' },
+    {
+      prodNo: 'C0004',
+      prodName: '아이스라테',
+      prodPrice: 2000,
+      img: 'C0004.jpg',
+    },
+    {
+      prodNo: 'C0005',
+      prodName: '콜드브루몰트',
+      prodPrice: 2500,
+      img: 'C0005.jpg',
+    },
+    {
+      prodNo: 'C0006',
+      prodName: '카페브레베',
+      prodPrice: 3500,
+      img: 'C0006.jpg',
+    },
+    {
+      prodNo: 'C0007',
+      prodName: '바닐라라떼',
+      prodPrice: 3500,
+      img: 'C0007.jpg',
+    },
+  ];
+  for (product of responseObj) {
+    if (product.prodNo === req.params.prodNo) {
+      resp.json(product);
+    }
+  }
+  resp.status(400).send();
+});
+
+app.post('/cart', (req, resp) => {
+  console.log(req.body);
+  resp.status(200).send();
+});
+
 app.listen(port, () => {
   console.log('3000번 포트에서 백엔드 서버 실행 중');
 });
