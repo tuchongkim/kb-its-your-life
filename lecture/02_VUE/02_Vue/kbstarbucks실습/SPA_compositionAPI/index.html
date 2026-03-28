@@ -1,0 +1,178 @@
+<!-- 
+요구사항
+
+로고는 스타벅스 사이트 로고 활용
+레이아웃도 비슷하게 구성 (오른쪽에 aisde 부분 추가)
+색깔도 비슷하게 구성(베이지색?)
+간격은 설정해도 되고 안해도 된다
+
+메뉴 목록
+- 로그인
+- 가입
+- 상품
+- 장바구니
+- 주문
+
+메뉴는 상단바에 목록 형태로 만든다
+윗단에 header 태그 할용 (베이지색)
+하단에 footer 태그 활용 (회색)
+중단은 section 태그 활용 (노란색)
+오른쪽바는 aside 태그 활용 (보라색)
+
+메뉴 목록은
+ul요소와 li요소로 구성해야 한다
+li요소 내부에 a태그와 href를 활용해야 한다
+ul요소들은 header 안에서 오른쪽에 배치
+li요소들은 밑줄이 없어야 한다
+
+
+로고는
+img 태그를 활용해서 구현
+
+aside 영역은 작게 잡는다
+
+footer 영역은 회사에 대한 간단한 소개 등이 들어가는데
+복붙해도 되고 코멘트를 적어도 되고
+
+section 영역은 내용이 많을 경우 스크롤 되도록 한다.
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>KB Star</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      /*
+      BEM 구조 
+      */
+      /* 전체 레이아웃 구성을 위한 설정 */
+      body {
+        margin: 0;
+        display: flex;
+        flex-direction: column; /* 세로배치 */
+        height: 100vh; /* 화면 전체 높이 사용 */
+      }
+
+      /* 1. header 레이아웃: 왼쪽 로고, 오른쪽 내비게이션 */
+      .header {
+        display: flex;
+        justify-content: space-between; /* 양 끝 정렬 */
+        align-items: center; /* 세로 중앙 정렬 */
+        padding: 10px 20px;
+        background-color: #fff;
+      }
+
+      .header__logo {
+        height: 75px;
+        width: auto;
+      }
+
+      .header__menu-list {
+        display: flex; /* 메뉴 가로 정렬 */
+        list-style: none; /* 불릿 제거 */
+        gap: 20px; /* 메뉴 간 간격 */
+      }
+
+      /* 링크 기본 스타일 및 색상 반전 효과 */
+      .header__menu-link {
+        text-decoration: none; /* 밑줄 제거 */
+        color: #333; /* 기본 글자색 */
+        padding: 8px 16px;
+        border-radius: 4px; /* 반전 시 부드러운 모서리 */
+        transition: all 0.3s ease; /* 부드러운 전환 효과 */
+      }
+
+      /* 마우스 호버 시 색상 반전 */
+      .header__menu-link:hover {
+        background-color: #333; /* 배경 검정 (또는 포인트 컬러) */
+        color: #fff; /* 글자 흰색 */
+      }
+
+      /* 2. 메인 컨테이너 (section + aside) */
+      .container {
+        background-color: red;
+
+        display: flex;
+        flex: 1; /* 헤더와 푸터를 제외한 나머지 공간 모두 차지 */
+        overflow: hidden; /* 자식인 section에서만 스크롤이 발생하도록 제한 */
+      }
+      /* 2-1. section 본문 (자동 스크롤) */
+      .container__content {
+        /*flex: 1;*/ /* aside(20%)를 제외한 나머지 80% 차지 */
+        flex: 4;
+        overflow-y: auto; /* 내용이 많으면 자동으로 세로 스크롤 생성 */
+        padding: 20px;
+        background-color: #f9f9f9;
+      }
+
+      /* 2-2. aside 사이드바 (오른쪽 20%) */
+      .container__sidebar {
+        /* width: 20%; */ /*20% 너비 고정 */
+        flex: 1;
+        padding: 20px;
+        background-color: #eee;
+        border-left: 1px solid #ddd;
+      }
+
+      /* 3. 푸터 (최대 높이 50px) */
+      .footer {
+        max-height: 50px;
+        height: 100%; /* 내용에 따라 늘어나되 50px까지만 */
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <img
+        src="./images/starbucks_logo.png"
+        alt="스타벅스 홈"
+        class="header__logo"
+      />
+      <nav class="header__nav">
+        <ul class="header__menu-list">
+          <li class="header__menu-item">
+            <a href="#" class="header__menu-link">로그인</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#" class="header__menu-link">가입</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#" class="header__menu-link">상품</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#" class="header__menu-link">장바구니</a>
+          </li>
+          <li class="header__menu-item">
+            <a href="#" class="header__menu-link">주문</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <section class="container__content">
+        <!-- 내용이 많아지면 이곳에 스크롤이 생깁니다 -->
+        <h2>본문 내용</h2>
+        <p>... 내용 생략 ...</p>
+      </section>
+
+      <aside class="container__sidebar">
+        <h3>사이드바 (20%)</h3>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <p>
+        사업자등록번호 : 201-81-21515 주식회사 에스씨케이컴퍼니 대표이사 :
+        손정현 TEL : 1522-3232 개인정보 보호책임자 : 이찬우 ⓒ 2026 Starbucks
+        Coffee Company. All Rights Reserved
+      </p>
+    </footer>
+  </body>
+</html>
