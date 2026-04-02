@@ -103,17 +103,23 @@ gap-4	1.5rem (24px) -->
 </template>
 
 <script setup>
+import axios from 'axios';
 import { onMounted, ref, reactive } from 'vue';
+import { useRoute } from 'vue-router';
 
-const prodNo = 'C0002'; //반응형을 유지할 필요가 없는 고정값
+// const prodNo = 'C0002'; //반응형을 유지할 필요가 없는 고정값
+const currentRoute = useRoute();
+const prodNo = currentRoute.params.prodNo;
 const state = reactive({ item: {} });
 const quantity = ref(0);
 
 onMounted(async () => {
   const url = `http://localhost:3000/product/${prodNo}`;
-  state.item = await fetch(url).then((response) => {
-    return response.json();
-  });
+  // state.item = await fetch(url).then((response) => {
+  //   return response.json();
+  // });
+  const response = await axios.get(url);
+  state.item = response.data;
 });
 </script>
 

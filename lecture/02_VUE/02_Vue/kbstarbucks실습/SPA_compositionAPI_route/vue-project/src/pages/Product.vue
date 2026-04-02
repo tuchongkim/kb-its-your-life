@@ -1,6 +1,16 @@
 <!-- script와 template의 위치는 중요하지 않다. -->
 
 <template>
+  <div>
+    요청전체경로currentRoute.fullPath : {{ currentRoute.fullPath }}<br />
+    요청URI경로currentRoute.path : {{ currentRoute.path }}<br />
+    요청동적파라미터currentRoute.params : {{ currentRoute.params }}<br />
+    요청쿼리스트링currentRoute.query : {{ currentRoute.query }}<br />
+  </div>
+
+  <!-- router-view: 기본적으로 최초로 렌더링된 내용이 유지된다 -->
+  <router-view :key="currentRoute.params.prodNo"></router-view>
+
   <Search @searchProductEvent="searchProductHandler"></Search>
   <table class="table table-hover w-50">
     <!-- w-50 : 부모 영역의 50퍼센트만 사용 -->
@@ -23,6 +33,7 @@
       v-for="p in pagedProduct"
       :key="p.prodNo"
       v-bind:childProduct="p"
+      @click="clickProductHandler(p.prodNo)"
     ></ProductItem>
   </table>
   <div class="container-fluid">
@@ -42,13 +53,20 @@
 import { computed, onMounted, reactive, ref } from 'vue';
 import ProductItem from '@/pages/ProductItem.vue';
 import Search from '@/pages/Search.vue';
+import { useRoute, useRouter } from 'vue-router';
+import axios from 'axios';
 
+const router = useRouter();
+const currentRoute = useRoute();
 const state = reactive({ product: [] });
 const currentPage = ref(1);
-const pageSize = ref(5);
+const pageSize = ref(10);
 
 onMounted(async () => {
-  state.product = await requestProduct();
+  const response = await requestProduct();
+  console.log(response);
+  state.product = response.data;
+  // state.product = await requestProduct();
 });
 
 const pagedProduct = computed(() => {
@@ -58,12 +76,24 @@ const pagedProduct = computed(() => {
 
 async function requestProduct() {
   const url = 'http://localhost:3000/product';
-  return fetch(url).then((response) => {
-    return response.json();
-  });
+  // return fetch(url).then((response) => {
+  //   return response.json();
+  // });
+  try {
+    return axios.get(url);
+  } catch (err) {
+    console.log(String(err));
+  }
 }
 
 function searchProductHandler(e) {
   alert(e);
+}
+
+function clickProductHandler(prodNo) {
+  // console.log(prodNo);
+  //router.push(`/product/${prodNo}`);
+
+  router.push({ name: 'ProductInfo', params: { prodNo } });
 }
 </script>
