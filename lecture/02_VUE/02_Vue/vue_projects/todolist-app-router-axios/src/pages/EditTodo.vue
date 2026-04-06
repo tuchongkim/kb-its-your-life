@@ -27,15 +27,15 @@
 </template>
 
 <script setup>
-import { inject, reactive } from 'vue';
+import { reactive } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
+import { useTodoListStore } from '@/stores/todoList.js';
 
-const todoList = inject('todoList');
-const { updateTodo } = inject('actions');
 const router = useRouter();
 const currentRoute = useRoute();
+const { todoList, updateTodo } = useTodoListStore();
 
-const matchedTodoItem = todoList.value.find(
+const matchedTodoItem = todoList.find(
   (item) => item.id === currentRoute.params.id
 );
 if (!matchedTodoItem) {
