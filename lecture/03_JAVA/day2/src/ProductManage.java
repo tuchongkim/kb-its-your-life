@@ -3,6 +3,11 @@ import com.my.dao.ProductDAOArray;
 import com.my.dto.Coffee;
 import com.my.dto.Product;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 public class ProductManage {
     public static void main(String[] args) {
 //        Product p = new Product();
@@ -28,6 +33,23 @@ public class ProductManage {
 
         ProductDAO dao;
         dao = new ProductDAOArray(5); //추후에 바꿔야 함 (BAD CODE)
+        Properties env = new Properties();
+        try {
+            env.load( new FileInputStream("my.properties"));
+            String className = env.getProperty("dao");
+            //className으로 클래스 로드
+            Class clazz = Class.forName(className);
+            //clazz.getDeclaredMethods();
+            //clazz.getDeclaredConstructor().newInstance();
+        } catch (FileNotFoundException e) { //자식 Exception
+            System.out.println(e.getMessage());
+        } catch (IOException e) { //부모 Exception
+            System.out.println();
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
         dao.add(c1);
         dao.findAll();
         Product[] all = dao.findAll();
