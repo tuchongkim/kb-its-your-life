@@ -9,6 +9,9 @@ public class ProductDAOArray implements ProductDAO {
     private Product[] products; //상품저장소
     private int totalCnt; //저장된 상품수
 
+    public ProductDAOArray() {
+        this.products= new Product[3];
+    }
     /**
      * 저장소의 최대 상품 저장길이를 설정한다
      * @param size 상품저장길이

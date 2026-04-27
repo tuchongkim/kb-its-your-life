@@ -6,6 +6,7 @@ import com.my.dto.Product;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
 public class ProductManage {
@@ -31,26 +32,36 @@ public class ProductManage {
 
         p1.printInfo();
 
-        ProductDAO dao;
-        dao = new ProductDAOArray(5); //추후에 바꿔야 함 (BAD CODE)
+        ProductDAO dao = null;
+//        dao = new ProductDAOArray(5); //추후에 바꿔야 함 (BAD CODE)
         Properties env = new Properties();
         try {
-            env.load( new FileInputStream("my.properties"));
+            env.load( new FileInputStream("c:\\my.properties"));
             String className = env.getProperty("dao");
             //className으로 클래스 로드
             Class clazz = Class.forName(className);
             //clazz.getDeclaredMethods();
-            //clazz.getDeclaredConstructor().newInstance();
+            dao = (ProductDAO) clazz.getDeclaredConstructor().newInstance();
         } catch (FileNotFoundException e) { //자식 Exception
             System.out.println(e.getMessage());
         } catch (IOException e) { //부모 Exception
-            System.out.println();
             System.out.println(e.getMessage());
+            throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
 
+        System.out.println(">>>상품 추가<<<");
         dao.add(c1);
+        System.out.println(">>>상품 전체조회<<<");
         dao.findAll();
         Product[] all = dao.findAll();
         for (int i = 0; i < all.length; i++) {
