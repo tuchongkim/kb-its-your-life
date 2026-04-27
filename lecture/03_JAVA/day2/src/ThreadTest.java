@@ -38,6 +38,21 @@ class Second extends Canvas implements Runnable {
     }
 }
 
+class Third implements Runnable {
+    int start, end, sum;
+    Third(int start, int end) {
+        this.start = start;
+        this.end = end;
+    }
+    @Override
+    public void run() {
+        for (int i = start; i <= end; i++) {
+            System.out.println(Thread.currentThread().getName() + ":sum=" + sum);
+            sum += i;
+        }
+    }
+}
+
 public class ThreadTest {
     public static void main(String[] args) {
         //java -cp ~~ ThreadTest
@@ -53,6 +68,26 @@ public class ThreadTest {
 
         First one = new First();
         First two = new First();
+        Third myThree = new Third(1, 100);
+        //myThree.start();
+        Thread t1 = new Thread(myThree);
+        Thread t2 = new Thread(new Third(101, 200));
+        t1.start();
+        t2.start();
+        // t1과 t2가 CPU를 점유하기 위해 경쟁한다
+        // 다른 스레드에서 계산한 결과값을 현재 스레드에서 사용하고 싶을 때 join() 메소드를 사용한다
+        try {
+            t1.join(); //t1용 스레드가 죽을 때까지 기다린다
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            t2.join(); //t2용 스레드가 죽을 때까지 기다린다
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("main thread에서 myThree.sum=" + myThree.sum); //어느 스레드가 CPU를 차지할 지 예측 불가
+
 
         //Second s = new Second();
         //s.start(); //컴파일에러. Second는 Runnable을 구현한 구현체이지, Thread를 상속받은 게 아니다
