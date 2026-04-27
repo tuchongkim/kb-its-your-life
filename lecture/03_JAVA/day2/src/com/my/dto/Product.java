@@ -37,4 +37,15 @@ public class Product { //컴파일시에 extends Object
     public String toString() {
         return prodNo + ":" + prodName + ":" + prodPrice;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Product) {
+            Product p = (Product) obj;
+            if (this.prodNo.equals(p.prodNo)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

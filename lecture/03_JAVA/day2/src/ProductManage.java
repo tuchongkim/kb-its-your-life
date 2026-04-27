@@ -61,6 +61,8 @@ public class ProductManage {
 
         System.out.println(">>>상품 추가<<<");
         dao.add(c1);
+        dao.add(new Coffee("C0001", "중복된커피", "베트남", 1000));
+        dao.add(new Coffee("C0002", "라테", "베트남", 1500));
         System.out.println(">>>상품 전체조회<<<");
         dao.findAll();
         Product[] all = dao.findAll();
