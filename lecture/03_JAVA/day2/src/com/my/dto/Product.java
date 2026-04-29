@@ -1,5 +1,7 @@
 package com.my.dto;
 
+import java.util.Objects;
+
 /**
  * DataTransferObject: 자료 전달용 객체
  */
@@ -38,14 +40,26 @@ public class Product { //컴파일시에 extends Object
         return prodNo + ":" + prodName + ":" + prodPrice;
     }
 
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (obj instanceof Product) {
+//            Product p = (Product) obj;
+//            if (this.prodNo.equals(p.prodNo)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+
     @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Product) {
-            Product p = (Product) obj;
-            if (this.prodNo.equals(p.prodNo)) {
-                return true;
-            }
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(prodNo, product.prodNo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(prodNo);
     }
 }

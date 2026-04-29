@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class ProductManage {
     public static void main(String[] args) {
@@ -58,6 +59,28 @@ public class ProductManage {
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
+
+        //cf> 이렇게 매번 분기를 만들지 않고, 명령들을 Command 패턴을 반영한 클래스들로 정의
+        /*
+        Scanner sc = new Scanner(System.in);
+        while(true) {
+            System.out.println("작업을 서낵하세요: 1-상품추가, 2-전체조회, 9-종료");
+            String line = sc. nextLine();
+            if ("1".equals(line)) {
+                System.out.println(">>>상품 추가<<<");
+                dao.add(c1);
+                dao.add(new Coffee("C0001", "중복된커피", "베트남", 1000));
+                dao.add(new Coffee("C0002", "라테", "베트남", 1500));
+            } else if ("2".equals(line)) {
+                System.out.println(">>>상품 전체조회<<<");
+                dao.findAll();
+                Product[] all = dao.findAll();
+                for (int i = 0; i < all.length; i++) {
+                    System.out.println(all[i]);
+                }
+            }
+        }
+         */
 
         System.out.println(">>>상품 추가<<<");
         dao.add(c1);
