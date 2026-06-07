@@ -67,7 +67,7 @@ class Push extends Thread {
     }
 }
 
-public class ThreadSharedTest {
+public class Ex15_ThreadSharedTest {
     public static void main(String[] args) {
         Share s1, s2;
 

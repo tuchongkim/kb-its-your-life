@@ -8,7 +8,7 @@ class Single {
     }
 }
 
-public class SingletonTest {
+public class Ex12_SingletonTest {
     public static void main(String[] args) {
         Single s1, s2;
 //        s1 = new Single(); //가 오류가 발생하도록 Single을 바꾸세요

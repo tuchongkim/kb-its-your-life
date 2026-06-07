@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class LoopTest {
+public class Ex4_LoopTest {
     public static void main(String[] args) {
         //1~10까지 출력하세요
         for (int i = 1; i <= 10; i++) {

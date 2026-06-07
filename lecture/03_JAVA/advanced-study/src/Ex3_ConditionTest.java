@@ -5,7 +5,7 @@ import java.util.Calendar;
  * if ~ else if ~ else
  * switch
  */
-public class ConditionTest {
+public class Ex3_ConditionTest {
     public static void main(String[] args) {
         //상하반기 구분
         Calendar c = Calendar.getInstance();

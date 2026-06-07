@@ -31,7 +31,7 @@ class Employee {
     }
 }
 
-public class ConstructorTest {
+public class Ex8_ConstructorTest {
     public static void main(String[] args) {
         Employee e1;
 //        e1 = new Employee();

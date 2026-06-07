@@ -1,4 +1,4 @@
-public class WrapperTest {
+public class Ex14_WrapperTest {
     public static void main(String[] args) {
         Object[] arr = new Object[10];
         arr[0] = new String("HELLO");

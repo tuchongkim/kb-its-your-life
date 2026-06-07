@@ -1,6 +1,6 @@
 import java.util.StringTokenizer;
 
-public class StringTest {
+public class Ex14_StringTest {
     public static void main(String[] args) {
         String s1, s2, s3, s4;
         s1 = "KB";

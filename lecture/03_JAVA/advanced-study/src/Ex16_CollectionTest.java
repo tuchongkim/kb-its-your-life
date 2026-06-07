@@ -2,7 +2,7 @@ import com.my.dto.Product;
 
 import java.util.*;
 
-public class CollectionTest {
+public class Ex16_CollectionTest {
     public static void m(Collection c) {
         //Collection은 인터페이스이다
         //인터페이스는 toString() 메서드를 지원하지 않는다

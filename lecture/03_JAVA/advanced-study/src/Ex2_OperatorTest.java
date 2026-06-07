@@ -9,7 +9,7 @@
  * - 대입연산자: =, +=, -=, *=, /=, %=
  *
  */
-public class OperatorTest {
+public class Ex2_OperatorTest {
     public static void main(String[] args) {
         // 산술연산자
         int a = 2; //정수

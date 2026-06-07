@@ -3,7 +3,7 @@ import world.europe.France;
 //import world.*.*;
 //import world.*;
 
-public class KoreaTest {
+public class Ex9_KoreaTest {
     public static void main(String[] args) {
 //        world.asia.Korea k;
 //        k = new world.asia.Korea();

@@ -1,5 +1,5 @@
 
-public class StaticTest {
+public class Ex12_StaticTest {
     // java -cp ~~ StaticTest
     // 1. StaticTest.class 파일 찾기
     // 2. 바이트코드 검증
@@ -23,15 +23,15 @@ public class StaticTest {
     public static void main(String[] args) {
         System.out.println(sv);
         sv++; //1증가
-        StaticTest t1 = new StaticTest();
+        Ex12_StaticTest t1 = new Ex12_StaticTest();
         System.out.println(t1.sv); //1
 
-        System.out.println(StaticTest.sv); //1
+        System.out.println(Ex12_StaticTest.sv); //1
         t1.sv++;
         t1.iv++;
 
-        StaticTest t2;
-        t2 = new StaticTest();
+        Ex12_StaticTest t2;
+        t2 = new Ex12_StaticTest();
         System.out.println(t2.sv); //2
         System.out.println(t2.iv); //0
     }

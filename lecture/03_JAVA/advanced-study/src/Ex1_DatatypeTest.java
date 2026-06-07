@@ -10,7 +10,7 @@
  *  - 참조 자료형
  */
 
-public class DatatypeTest {
+public class Ex1_DatatypeTest {
     public static void main(String[] args) {
         byte b = 127; // 최대값
         b++; //오버플로우

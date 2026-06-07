@@ -1,5 +1,4 @@
 import com.my.dao.ProductDAO;
-import com.my.dao.ProductDAOArray;
 import com.my.dto.Coffee;
 import com.my.dto.Product;
 
@@ -8,9 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
-import java.util.Scanner;
 
-public class ProductManage {
+public class Ex0_ProductManage {
     public static void main(String[] args) {
 //        Product p = new Product();
         String prodNo = "C0001";

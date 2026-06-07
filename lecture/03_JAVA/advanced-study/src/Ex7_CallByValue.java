@@ -3,7 +3,7 @@
  * 인자값이 메서드의 매개변수에 대입되는 방식은 CallByValue이다
  * 인자값이 매개변수에 복붙된다
  */
-public class CallByValue {
+public class Ex7_CallByValue {
     void m(int i) {
         i = 100;
     }
@@ -15,7 +15,7 @@ public class CallByValue {
     }
 
     public static void main(String[] args) {
-        CallByValue c = new CallByValue();
+        Ex7_CallByValue c = new Ex7_CallByValue();
         int i = 99;
         c.m(i);
         System.out.println(i); //99

@@ -39,7 +39,7 @@ class Horse extends Canvas implements Runnable{
         }
     }
 }
-public class HorseRace {
+public class Ex13_HorseRace {
     private JFrame f;
     private Horse[] horses;
     private JButton btStart, btReady;
@@ -61,7 +61,7 @@ public class HorseRace {
         }
     }
 
-    public HorseRace(){
+    public Ex13_HorseRace(){
         //1. 초기화
         f = new JFrame("달리기"); //액자
         horses = new Horse[3];
@@ -123,6 +123,6 @@ public class HorseRace {
         f.setVisible(true);
     }
     public static void main(String[] args) {
-        new HorseRace();
+        new Ex13_HorseRace();
     }
 }

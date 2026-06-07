@@ -53,7 +53,7 @@ class Third implements Runnable {
     }
 }
 
-public class ThreadTest {
+public class Ex15_ThreadTest {
     public static void main(String[] args) {
         //java -cp ~~ ThreadTest
         //해당 경로에서 ThreadTEst.class 를 찾는다

@@ -1,4 +1,4 @@
-public class ObjectTest {
+public class Ex10_ObjectTest {
     public static void main(String[] args) {
         Object o1, o2; //자바취상위 클래스 java.lang.Object
         o1 = new Object();

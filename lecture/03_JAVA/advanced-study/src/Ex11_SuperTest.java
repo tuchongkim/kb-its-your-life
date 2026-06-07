@@ -2,7 +2,7 @@ import com.my.dto.Coffee;
 import com.my.dto.Product;
 //import com.my.dto.*;
 
-public class SuperTest {
+public class Ex11_SuperTest {
     public static void main(String[] args) {
         Product p = new Product(); //Product() 생성자 호출됨
         Coffee c = new Coffee(); //부모생성자 자동호출됨

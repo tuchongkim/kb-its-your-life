@@ -24,7 +24,7 @@ class TV {
     }
 }
 
-public class WatchTV {
+public class Ex5_WatchTV {
     public static void main(String[] args) {
         TV tv1; //참조형 지역변수
         tv1 = null; //참조하지 않는다
